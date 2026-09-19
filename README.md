@@ -33,6 +33,3 @@ npm run dev
  
 Set `DATABASE_URL`, `SECRET_KEY`, and `GEMINI_API_KEY` in `backend/.env`, and the API base URL in `bolt-frontend/.env`.
  
-## Disclaimer
- 
-This platform is an educational/organizational tool. It does not diagnose conditions or recommend treatment — always consult a qualified healthcare professional for abnormal findings.
