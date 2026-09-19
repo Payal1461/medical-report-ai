@@ -1,0 +1,106 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --bg: #f7f9f9;
+    --surface: #ffffff;
+    --ink: #1f2a2e;
+    --muted: #5c6b70;
+    --line: #e3e9e8;
+    --teal: #2f8f8a;
+    --teal-soft: #e8f3f1;
+    --amber: #c08a3e;
+    --amber-soft: #f7eed9;
+    --slate-blue: #5a7a8c;
+    --slate-blue-soft: #eaf0f4;
+  }
+
+  html {
+    font-family: 'Inter', system-ui, sans-serif;
+    color: var(--ink);
+    background: var(--bg);
+  }
+
+  body {
+    margin: 0;
+    min-height: 100vh;
+  }
+
+  h1, h2, h3 {
+    font-family: 'Fraunces', Georgia, serif;
+    letter-spacing: -0.01em;
+  }
+}
+
+@layer components {
+  .card {
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: 16px;
+  }
+
+  .btn-primary {
+    background: var(--teal);
+    color: white;
+    font-weight: 600;
+    padding: 0.625rem 1.25rem;
+    border-radius: 10px;
+    transition: all 0.18s ease;
+  }
+  .btn-primary:hover:not(:disabled) {
+    background: #287d78;
+    transform: translateY(-1px);
+    box-shadow: 0 6px 16px -6px rgba(47, 143, 138, 0.5);
+  }
+  .btn-primary:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+
+  .btn-ghost {
+    color: var(--muted);
+    font-weight: 500;
+    padding: 0.5rem 0.875rem;
+    border-radius: 10px;
+    transition: all 0.15s ease;
+  }
+  .btn-ghost:hover {
+    background: var(--teal-soft);
+    color: var(--teal);
+  }
+
+  .input-field {
+    width: 100%;
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: 10px;
+    padding: 0.625rem 0.875rem;
+    color: var(--ink);
+    transition: border-color 0.15s ease, box-shadow 0.15s ease;
+  }
+  .input-field:focus {
+    outline: none;
+    border-color: var(--teal);
+    box-shadow: 0 0 0 3px rgba(47, 143, 138, 0.12);
+  }
+}
+
+@keyframes toast-in {
+  from { opacity: 0; transform: translateY(12px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.toast-enter {
+  animation: toast-in 0.25s ease forwards;
+}
+
+@keyframes fade-up {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.fade-up {
+  animation: fade-up 0.3s ease forwards;
+}
