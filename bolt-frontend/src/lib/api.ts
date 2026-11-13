@@ -1,5 +1,6 @@
 import type {
   AuthResponse,
+  ChatResponse,
   ReportListItem,
   ReportSummary,
   TrendResponse,
@@ -110,4 +111,14 @@ export const api = {
       `/trends/${encodeURIComponent(name)}`,
       { method: 'GET' },
     ),
+
+  chat: (reportId: number, message: string, searchAllReports = false) =>
+    request<ChatResponse>('/chat', {
+      method: 'POST',
+      body: JSON.stringify({
+        report_id: reportId,
+        message,
+        search_all_reports: searchAllReports,
+      }),
+    }),
 };

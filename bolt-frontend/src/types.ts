@@ -61,6 +61,17 @@ export interface TrendResponse {
   trend_summary: string | null;
 }
 
+export interface ChatSource {
+  report_id: number;
+  report_name: string;
+  snippet: string;
+}
+
+export interface ChatResponse {
+  answer: string;
+  sources: ChatSource[];
+}
+
 export interface ApiError {
   detail: string;
 }

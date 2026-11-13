@@ -14,3 +14,7 @@ pillow
 python-dotenv
 email-validator
 google-genai
+chromadb
+langchain-core
+langchain-text-splitters
+langchain-chroma

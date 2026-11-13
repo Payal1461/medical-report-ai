@@ -2,7 +2,7 @@ from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
 from app import models  # noqa: F401
-from app.api import auth_routes, report_routes, dashboard_routes, trend_routes
+from app.api import auth_routes, report_routes, dashboard_routes, trend_routes, chat_routes
 
 app = FastAPI(title="AI Medical Report Explainer & PHR")
 
@@ -27,6 +27,7 @@ app.include_router(auth_routes.router)
 app.include_router(report_routes.router)
 app.include_router(dashboard_routes.router)
 app.include_router(trend_routes.router)
+app.include_router(chat_routes.router)
 
 
 @app.get("/")

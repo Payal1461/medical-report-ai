@@ -1,3 +1,4 @@
+import logging
 import shutil
 import uuid
 from datetime import date
@@ -9,6 +10,7 @@ from app.extraction.biomarker_parser import parse_biomarkers
 
 from app.models.chat_history import ChatHistory
 from app.schemas.chat_history_schema import ChatHistoryOut
+from app.rag.retriever import index_report
 
 
 from fastapi import APIRouter, Depends, UploadFile, File, HTTPException, status
@@ -20,6 +22,8 @@ from app.core.security import get_current_user
 from app.models.user import User
 from app.models.report import Report
 from app.schemas.report_schema import ReportOut, UploadResponse
+
+logger = logging.getLogger(__name__)
 
 router = APIRouter(tags=["reports"])
 
@@ -69,6 +73,14 @@ def upload_report(
             )
             db.add(biomarker)
         db.commit()
+
+    # Prepare the report for the AI chat assistant.
+    # If this fails, the upload itself still succeeds.
+    try:
+        db.refresh(report)
+        index_report(report, report.biomarkers)
+    except Exception:
+        logger.exception("Chat indexing failed for report %s", report.id)
 
     return UploadResponse(
         message="File uploaded successfully",

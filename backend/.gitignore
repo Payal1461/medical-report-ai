@@ -150,3 +150,4 @@ __pycache__/
 uploads/
 test_report*.pdf
 test_report*.txt
+chroma_db/

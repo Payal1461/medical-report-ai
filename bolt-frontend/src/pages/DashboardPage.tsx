@@ -11,6 +11,7 @@ import {
 import { api } from '@/lib/api';
 import { useToast } from '@/context/ToastContext';
 import { PageSpinner } from '@/components/Spinner';
+import { ChatPanel } from '@/components/ChatPanel';
 import type { Biomarker, ReportListItem, ReportSummary } from '@/types';
 
 interface DashboardProps {
@@ -178,6 +179,7 @@ export function DashboardPage({
       ) : (
         <DashboardContent data={dashboard} />
       )}
+      {selectedId != null && <ChatPanel key={selectedId} reportId={selectedId} />}
     </div>
   );
 }
