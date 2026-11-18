@@ -151,3 +151,8 @@ uploads/
 test_report*.pdf
 test_report*.txt
 chroma_db/
+.pytest_cache/
+.test-postgres/
+# Local Firebase Admin credentials must never be tracked.
+.secrets/
+*-firebase-adminsdk-*.json

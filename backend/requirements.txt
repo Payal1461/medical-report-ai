@@ -18,3 +18,5 @@ chromadb
 langchain-core
 langchain-text-splitters
 langchain-chroma
+firebase-admin>=7.4,<8
+alembic>=1.16,<2
